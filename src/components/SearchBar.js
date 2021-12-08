@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
-const SearchBar = () => {
+const SearchBar = ({query, onQueryChange}) => {
+ 
+
   return (
     <View style={styles.backgroundStyle}>
       <Feather name="search" style={styles.iconStyle} />
-      <TextInput style={styles.inputStyle} placeholder="Search" />
+      <TextInput
+        style={styles.inputStyle}
+        placeholder="Search"
+        autoCapitalize="none"
+        autoCorrect={false}
+        value={query}
+        onChangeText={(newQuery) => onQueryChange(newQuery)}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   backgroundStyle: {
+    marginTop: 10,
     backgroundColor: "#F0EEEE",
     height: 50,
     borderRadius: 5,
