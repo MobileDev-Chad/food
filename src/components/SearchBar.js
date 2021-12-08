@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
-const SearchBar = ({query, onQueryChange}) => {
+const SearchBar = ({query, onQueryChange, onQuerySubmit}) => {
  
 
   return (
@@ -14,7 +14,8 @@ const SearchBar = ({query, onQueryChange}) => {
         autoCapitalize="none"
         autoCorrect={false}
         value={query}
-        onChangeText={(newQuery) => onQueryChange(newQuery)}
+        onChangeText={onQueryChange}
+        onEndEditing= {onQuerySubmit}
       />
     </View>
   );
