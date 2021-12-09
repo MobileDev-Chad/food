@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import yelp from "../api/yelp";
 
 const SearchBar = ({query, onQueryChange, onQuerySubmit}) => {
  

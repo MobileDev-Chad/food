@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import SearchBar from "../components/SearchBar";
+import useResults from "../hooks/useResults";
 
 const SearchScreen = () => {
   const [query, setQuery] = useState("");
+  const [searchApi, results, errorMessage] = useResults();
 
   return (
     <View>
       <SearchBar
         query={query}
-        onQueryChange={(newQuery) => setQuery(newQuery)}
-        onQuerySubmit={()=> console.log('query was submitted')}
+        onQueryChange={setQuery}
+        onQuerySubmit={() => searchApi(query)}
       />
-      <Text>Search Screen</Text>
+      {errorMessage ? <Text>{errorMessage}</Text> : null}
+      <Text>We have found {results.length} results</Text>
     </View>
   );
 };
